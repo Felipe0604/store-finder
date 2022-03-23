@@ -42,6 +42,6 @@ public class ExactStoreStrategy implements SearchStrategy {
      * @return Round Value
      */
     private Long getRound(Double value){
-        return Math.round(value * 100);
+        return Math.round(value * 10000);
     }
 }
