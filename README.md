@@ -1,8 +1,20 @@
 # Jumbo Technical Assignment : Store Finder
 
+
+## Table of Contents
+- [Main Features](#main-features)
+- [Requirements](#requirements)
+- [Technology Stack](#technology-stack)
+- [Build and Run App](#build-and-run)
+- [Usage](#usage)
+
+
+## Main Features
+
 This application provides the functionality to search a number of store that are closer to a predefined coordinate. Positions are represented by geographic coordinates and the distance is calculated, using the Haversine formula (https://en.wikipedia.org/wiki/Haversine_formula).
 
-## Before to Start
+
+## Requirements
 
 The application requires the following programs:
 
@@ -20,41 +32,52 @@ The application requires the following gradle dependencies:
 * Lombok (https://projectlombok.org/)
 * Mockito (https://site.mockito.org/)
 
-## Build and Run App (Windows)
+## Build and Run
 
-### - Build 
+### Window
 
-Run `gradlew.bat build` to build the project.
+- Build the project.
+```
+gradlew.bat build
+```
 
-### - Run Server
+- Deploy Spring Boot Server. The app will run using the port 8080
+```
+gradlew.bat bootRun
+```
 
-Run `gradlew.bat bootRun` to deploy Spring Boot Server. The app will run using the port 8080.
+- Run unit tests using Mockito and JUnit
+```
+gradlew.bat test
+```
 
-### - Run Test
+### Linux or Mac
 
-Run `gradlew.bat test` to execute the unit tests using Mockito and JUnit.
+- Build the project.
+```
+./gradlew build build
+```
 
-## Build and Run App (Linux or Mac)
+- Deploy Spring Boot Server. The app will run using the port 8080
+```
+./gradlew bootRun
+```
 
-### - Build
+- Run unit tests using Mockito and JUnit
+```
+./gradlew test
+```
 
-Run `./gradlew build` to build the project.
+### Docker
 
-### - Run Server
+- Create docker image
+```
+docker build -t store-finder-image .
+```
 
-Run `./gradlew bootRun` to deploy Spring Boot Server The app will run using the port 8080.
+- Create docker container and run. The app will run using the port 8080
+```
+docker run --name StoreFinderContainer --publish 8080:8080 store-finder-image
+```
 
-### - Running unit tests
-
-Run `./gradlew test` to execute the unit tests using Mockito and JUnit.
-
-## Build and Run App (Docker)
-
-### - Build Image
-
-Run `./docker build -t store-finder-image .` to create docker image.
-
-### - Run Container
-
-Run `docker run –name StoreFinderContainer –publish 8080:8080 store-finder-image` to create docker container and run. The app will run using the port 8080.
-
+## Usage
