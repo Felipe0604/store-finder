@@ -10,5 +10,7 @@ import java.util.List;
  * @author Felipe Gonzalez
  */
 public interface SearchStrategy {
+
     List<Store> getStores(List<Store> storeList);
+
 }

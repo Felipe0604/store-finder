@@ -9,6 +9,7 @@ public final class DistanceCalculatorUtil {
 
     /**
      * Haversine Distance Calculator
+     *
      * @param longitude1 First Point Latitude
      * @param latitude1 First Point Longitude
      * @param longitude2 Second Point Latitude
@@ -21,23 +22,16 @@ public final class DistanceCalculatorUtil {
                                               Double longitude2,
                                               Double latitude2,
                                               Double sphereRadius){
-        Double diffLatitude = degreesToRadians(latitude2-latitude1);
-        Double diffLongitude = degreesToRadians(longitude2-longitude1);
-        Double a = Math.sin(diffLatitude/2) * Math.sin(diffLatitude/2) +
-                   Math.cos(degreesToRadians(latitude1)) *
-                   Math.cos(degreesToRadians(longitude2)) *
-                   Math.sin(diffLongitude/2) * Math.sin(diffLongitude/2);
-        Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        Double distance = sphereRadius * c;
-        return distance;
+        // Degrees To Radians constant
+        Double p = (Math.PI/180);
+
+        // Haversine Formula
+        var a = 0.5 - Math.cos((latitude2 - latitude1) * p)/2 +
+                      Math.cos(latitude1 * p) * Math.cos(latitude2 * p) *
+                        (1 - Math.cos((longitude2 - longitude1) * p))/2;
+
+        // Get distance by sphere radius
+        return 2 * sphereRadius * Math.asin(Math.sqrt(a));
     }
 
-    /**
-     * Convert Degrees To Radians
-     * @param degrees Input Degrees
-     * @return Output Radians
-     */
-    public static Double degreesToRadians(Double degrees){
-        return degrees * (Math.PI/180);
-    }
 }

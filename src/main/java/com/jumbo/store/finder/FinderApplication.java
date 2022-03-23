@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import javax.annotation.PreDestroy;
 
 /**
  * Store Finder Application
+ *
  * @author Felipe Gonzalez
  */
 @Slf4j
@@ -21,12 +21,6 @@ public class FinderApplication {
 												 "\n*          Successfully Started        *" +
 												 "\n*                                      *" +
 												 "\n****************************************\n";
-
-	public static final String SHUTTING_DOWN_MESSAGE = "\n\n****************************************" +
-													   "\n*                                      *" +
-												       "\n*             Shutting Down            *" +
-													   "\n*                                      *" +
-												       "\n****************************************\n";
 
 
 	public static void main(String[] args) {
@@ -41,13 +35,5 @@ public class FinderApplication {
 		log.info(STARTUP_MESSAGE);
 	}
 
-
-	/**
-	 * On Destroy Event
-	 */
-	@PreDestroy
-	public void onDestroy() {
-		log.info(SHUTTING_DOWN_MESSAGE);
-	}
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Store Wrapper model
  * Only for file reader
+ *
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)

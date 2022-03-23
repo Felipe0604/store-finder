@@ -7,7 +7,7 @@ import com.jumbo.store.finder.model.Store;
 import java.util.List;
 
 /**
- * Main strategy Class
+ * Main Finder strategy Class
  *
  * @author Felipe Gonzalez
  */
@@ -19,14 +19,22 @@ public class Finder {
         this.strategy = strategy;
     }
 
-    public List<Store> getStores(List<Store> storeList) {
+    /**
+     * Get Store list depending on the strategy
+     *
+     * @param stores List of stores from repository
+     * @return Filtered Store list
+     */
+    public List<Store> getStores(List<Store> stores) {
 
-        if(storeList == null || storeList.isEmpty()){
+        // Verify data from repository
+        if(stores == null || stores.isEmpty()){
             throw new EmptyDataBaseException("Connection problem or empty repository");
         }
 
-        List<Store> result = this.strategy.getStores(storeList);
+        List<Store> result = this.strategy.getStores(stores);
 
+        // Verify filtered store list
         if(result == null || result.isEmpty()){
             throw new NoDataFoundException("No Stores available");
         }

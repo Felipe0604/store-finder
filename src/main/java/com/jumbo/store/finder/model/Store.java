@@ -3,12 +3,15 @@ package com.jumbo.store.finder.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Store Model
+ *
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Store {
+public class Store implements Serializable {
     private String city;
     private String postalCode;
     private String street;

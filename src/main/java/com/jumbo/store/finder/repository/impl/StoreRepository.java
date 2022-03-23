@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jumbo.store.finder.model.Store;
 import com.jumbo.store.finder.model.StoreWrapper;
-import com.jumbo.store.finder.repository.IStoreRepository;
+import com.jumbo.store.finder.repository.FileStoreRepository;
 import com.jumbo.store.finder.util.ResourceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -12,11 +12,17 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * File Repository for Store Data
+ *
+ * @version 1.0
+ * @author Felipe Gonzalez
+ */
 @Slf4j
 @Repository
-public class StoreRepository implements IStoreRepository {
+public class StoreRepository implements FileStoreRepository<Store> {
 
-    public List<Store> findStores(){
+    public List<Store> findAll(){
 
        try{
            String content = ResourceUtil.getFileResourceContent("/file/stores.json");

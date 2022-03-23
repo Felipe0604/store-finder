@@ -5,7 +5,8 @@ import lombok.Data;
 
 /**
  * Pair Model (Key, Value)
- * The comparator is by key only
+ * The comparator is only by key.
+ *
  * @param <K> Key
  * @param <V> Value
  */
