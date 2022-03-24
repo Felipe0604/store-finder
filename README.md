@@ -8,6 +8,7 @@
 - [Build and Run App](#build-and-run)
 - [Rest API](#rest-api)
 - [Pending Improvements](#pending-improvements)
+- [Creator](#creator)
 
 
 ## Main Features
@@ -189,6 +190,27 @@ Get stores by filter or all. The filter values should be exact, with only 4 deci
         }
     ]
 ```
+
+### Actuator
+
+Get app health info.
+
+- Request
+
+`GET http://localhost:8080/actuator/health`
+
+- Response
+```
+    HTTP/1.1 200 OK
+    Status: 200 OK
+    Connection: keep-alive
+    Content-Type: application/vnd.spring-boot.actuator.v3+json
+
+    {
+        "status": "UP"
+    }
+```
+
 ## Pending Improvements
 
 Some features were not implemented, but should be a priority requirement in the future.
@@ -196,3 +218,9 @@ Some features were not implemented, but should be a priority requirement in the 
 - Security: Implement token authentication for API Rest.
 - Repository: It is required to define a database or repository for the Store.
 - Swagger: A robust document for APIs, including exceptions definition.
+
+## Creator
+
+Felipe Gonzalez Foncea
+
+- https://www.linkedin.com/in/felipegonzalezfoncea/

@@ -21,6 +21,23 @@ dependencies {
 	testImplementation 'org.mockito:mockito-core'
 }
 
+sourceSets{
+	main {
+		resources {
+			srcDirs = [
+					"src/main/resources"
+			]
+		}
+	}
+	test {
+		resources {
+			srcDirs = [
+			        "src/test/resources"
+			]
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 	testLogging.exceptionFormat = 'full'

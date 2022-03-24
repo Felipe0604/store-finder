@@ -24,10 +24,10 @@ public class ControllerExceptionHandler {
      * @return ResponseEntity.
      */
     @ExceptionHandler(NoDataFoundException.class)
-    protected ResponseEntity handleNoDataFoundException(NoDataFoundException exception){
+    protected ResponseEntity<String> handleNoDataFoundException(NoDataFoundException exception){
         log.info("Empty result exception, message: {}, stacktrace: {}",
                 exception.getMessage(), exception.getStackTrace());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
     /**
@@ -37,9 +37,9 @@ public class ControllerExceptionHandler {
      * @return ResponseEntity.
      */
     @ExceptionHandler(EmptyDataBaseException.class)
-    protected ResponseEntity handleEmptyDataBaseException(EmptyDataBaseException exception){
+    protected ResponseEntity<String> handleEmptyDataBaseException(EmptyDataBaseException exception){
         log.info("No content in the source exception, message: {}, stacktrace: {}",
                 exception.getMessage(), exception.getStackTrace());
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(exception.getMessage());
     }
 }

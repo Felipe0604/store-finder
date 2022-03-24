@@ -3,24 +3,16 @@ package com.jumbo.store.finder.integration;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jumbo.store.finder.model.Store;
-import com.jumbo.store.finder.model.StoreWrapper;
-import com.jumbo.store.finder.repository.impl.StoreRepository;
-import com.jumbo.store.finder.util.ResourceUtil;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
-import java.io.IOException;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,18 +22,6 @@ public class IntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-
-   @MockBean
-    private StoreRepository storeRepository;
-
-    @BeforeEach
-    void setup() throws IOException {
-        String content = ResourceUtil.getFileResourceContent("/file/stores-test.json");
-        StoreWrapper storeWrapper = new ObjectMapper().readValue(content, StoreWrapper.class);
-        when(this.storeRepository.findAll()).thenReturn(storeWrapper.getStores());
-    }
-
 
     @Test
     @DisplayName("Integration Test: Get the closest stores from test file")
