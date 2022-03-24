@@ -45,7 +45,7 @@ public class StoreFinderController {
     public ResponseEntity<List<Store>> getClosestStores(@PathVariable Double longitude,
                                                         @PathVariable Double latitude,
                                                         @RequestParam Optional<Integer> stores){
-        log.info("Called via url /store/finder/longitude/{longitude}/latitude/{latitude}", longitude, latitude);
+        log.info("Called via url /store/finder/longitude/{}/latitude/{}", longitude, latitude);
 
         List<Store> response = storeService.getClosestStores(longitude, latitude, stores.orElseGet(() -> 5));
 
@@ -66,7 +66,7 @@ public class StoreFinderController {
     public ResponseEntity<List<Store>> getClosestStoresWithQueryParams(@RequestParam Double longitude,
                                                                        @RequestParam Double latitude,
                                                                        @RequestParam Optional<Integer> stores){
-        log.info("Called via url /store/finder?longitude={longitude}&latitude={latitude}", longitude, latitude);
+        log.info("Called via url /store/finder?longitude={}&latitude={}", longitude, latitude);
 
         List<Store> response = storeService.getClosestStores(longitude, latitude, stores.orElseGet(() -> 5));
 
@@ -85,7 +85,7 @@ public class StoreFinderController {
     @GetMapping("/longitude/{longitude}/latitude/{latitude}")
     public ResponseEntity<List<Store>> getStoreByPosition(@PathVariable Double longitude,
                                                           @PathVariable Double latitude){
-        log.info("Called via url /store/longitude/{longitude}/latitude/{latitude}", longitude, latitude);
+        log.info("Called via url /store/longitude/{}/latitude/{}", longitude, latitude);
 
         List<Store> response = storeService.getStores(longitude, latitude);
         return ResponseEntity.status(HttpStatus.OK)

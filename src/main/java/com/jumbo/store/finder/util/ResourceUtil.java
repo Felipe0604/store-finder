@@ -1,9 +1,11 @@
 package com.jumbo.store.finder.util;
 
+import io.micrometer.core.instrument.util.IOUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -26,18 +28,13 @@ public final class ResourceUtil {
      * @return File Content
      */
     public static String getFileResourceContent(String pathFile) {
-        try{
-            // Get Resource content
-            URL url = ResourceUtil.class.getResource(pathFile);
-
-            // Validate if the file exists
-            if(url != null){
-                Path path = Paths.get(url.toURI());
-                return Files.readString(path, StandardCharsets.UTF_8);
+        try(InputStream input = ResourceUtil.class.getResourceAsStream(pathFile)){
+            if(input != null){
+                return IOUtils.toString(input, StandardCharsets.UTF_8);
             } else {
                 throw new FileNotFoundException();
             }
-        }catch (URISyntaxException | IOException e){
+        }catch (IOException e){
             log.error(e.getMessage(), e);
         }
         return null;

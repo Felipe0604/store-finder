@@ -38,7 +38,7 @@ public class StoreService {
     public List<Store> getClosestStores(Double longitude,
                                         Double latitude,
                                         Integer numberOfStores){
-        log.info("Get the closest stores");
+        log.info("Service Store: Get the closest stores");
 
         // Build Strategy
         SearchStrategy strategy = new ClosestStoresStrategy(longitude, latitude, numberOfStores);
@@ -57,7 +57,7 @@ public class StoreService {
      * @return List of Stores
      */
     public List<Store> getStores(Double longitude, Double latitude){
-        log.info("Get stores");
+        log.info("Service Store: Get stores");
 
         // Build Strategy
         SearchStrategy strategy = new ExactStoreStrategy(longitude, latitude);
